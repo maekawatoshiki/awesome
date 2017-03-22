@@ -10,13 +10,13 @@
 local theme                                     = {}
 
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/theme"
-theme.wallpaper                                 = os.getenv("HOME") .. "/ピクチャ/flat_cloud.jpg"
+theme.wallpaper                                 = os.getenv("HOME") .. "/ピクチャ/star.png"
 
 theme.font                                      = "Ubuntu Mono 12"
-theme.bg_normal                                 = "#00000000"
+theme.bg_normal                                 = "#00000003"
 theme.bg_focus                                  = "#11172e55"
 theme.bg_urgent                                 = "#000000"
-theme.fg_normal                                 = "#aaaaaa"
+theme.fg_normal                                 = "#ffffff"
 theme.fg_focus                                  = "#fefefe"
 theme.fg_urgent                                 = "#af1d18"
 theme.fg_minimize                               = "#ffffff"
