@@ -5,10 +5,12 @@ local wibox = require("wibox")
 local os    = { getenv = os.getenv, setlocale = os.setlocale }
 
 local theme                                     = {}
+
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/theme"
 theme.wallpaper                                 = os.getenv("HOME") .. "/ピクチャ/star.png"
+
 theme.font                                      = "Ubuntu Mono 12"
-theme.bg_normal                                 = "#0000000f"
+theme.bg_normal                                 = "#00000003"
 theme.bg_focus                                  = "#11172e55"
 theme.bg_urgent                                 = "#000000"
 theme.fg_normal                                 = "#ffffff"
@@ -81,6 +83,7 @@ theme.titlebar_maximized_button_focus_inactive  = theme.confdir .. "/icons/title
 theme.titlebar_maximized_button_normal_active   = theme.confdir .. "/icons/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active    = theme.confdir .. "/icons/titlebar/maximized_focus_active.png"
 
+
 local markup = lain.util.markup
 
 -- Textclock
@@ -145,13 +148,13 @@ local mail = lain.widget.imap({
 })
 --]]
 
--- -- CPU
--- local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
--- local cpu = lain.widget.cpu({
---     settings = function()
---         widget:set_markup(markup.fontfg(theme.font, "#FFFFFF", cpu_now.usage .. "% "))
---     end
--- })
+-- CPU
+local cpuicon = wibox.widget.imagebox(theme.widget_cpu)
+local cpu = lain.widget.cpu({
+    settings = function()
+        widget:set_markup(markup.fontfg(theme.font, "#FFFFFF", cpu_now.usage .. "% "))
+    end
+})
 
 -- Coretemp
 local tempicon = wibox.widget.imagebox(theme.widget_temp)
@@ -313,16 +316,17 @@ function theme.at_screen_connect(s)
             mytextclock,
         },
     }
-
+    --
     -- -- Create the bottom wibox
     -- s.mybottomwibox = awful.wibar({ position = "bottom", screen = s, border_width = 0, height = 20, bg = theme.bg_normal, fg = theme.fg_normal })
-
-    -- Add widgets to the bottom wibox
+    --
+    -- -- Add widgets to the bottom wibox
     -- s.mybottomwibox:setup {
     --     layout = wibox.layout.align.horizontal,
     --     { -- Left widgets
     --         layout = wibox.layout.fixed.horizontal,
     --     },
+    --     s.mytasklist, -- Middle widget
     --     { -- Right widgets
     --         layout = wibox.layout.fixed.horizontal,
     --         s.mylayoutbox,
@@ -331,3 +335,4 @@ function theme.at_screen_connect(s)
 end
 
 return theme
+
