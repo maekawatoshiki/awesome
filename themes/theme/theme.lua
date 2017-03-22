@@ -7,7 +7,7 @@ local os    = { getenv = os.getenv, setlocale = os.setlocale }
 local theme                                     = {}
 
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/theme"
-theme.wallpaper                                 = os.getenv("HOME") .. "/ピクチャ/star.png"
+theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/themes/theme/wall.png"
 
 theme.font                                      = "Ubuntu Mono 12"
 theme.bg_normal                                 = "#00000003"

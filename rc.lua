@@ -673,4 +673,4 @@ awful.util.spawn('gnome-terminal', {
     awful.client.movetotag(screen[1].tags[2], c)
   end,
   fullscreen = true
-}
+})
