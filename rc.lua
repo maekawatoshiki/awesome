@@ -666,7 +666,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 os.execute('xset r rate 200 40')
 os.execute('xgamma -gamma 0.6')
 
-awful.util.spawn('xcompmgr')
+awful.util.spawn('compton')
 awful.util.spawn('firefox')
 awful.util.spawn('gnome-terminal', {
   callback = function(c)
