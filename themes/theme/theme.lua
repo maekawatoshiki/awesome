@@ -7,7 +7,7 @@ local os    = { getenv = os.getenv, setlocale = os.setlocale }
 local theme                                     = {}
 
 theme.confdir                                   = os.getenv("HOME") .. "/.config/awesome/themes/theme"
-theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/themes/theme/wall.png"
+theme.wallpaper                                 = os.getenv("HOME") .. "/.config/awesome/themes/theme/wall2.png"
 
 theme.font                                      = "Ubuntu Mono 12"
 theme.bg_normal                                 = "#00000000"
@@ -27,8 +27,10 @@ theme.menu_width                                = 130
 theme.menu_submenu_icon                         = theme.confdir .. "/icons/submenu.png"
 theme.menu_fg_normal                            = "#ffffff"
 theme.menu_fg_focus                             = "#ffffff"
-theme.menu_bg_normal                            = "#050505dd"
+theme.menu_bg_normal                            = "#050505ee"
 theme.menu_bg_focus                             = "#11172e"
+theme.menu_height                               = 20
+theme.menu_width                                = 120
 theme.widget_temp                               = theme.confdir .. "/icons/temp.png"
 theme.widget_uptime                             = theme.confdir .. "/icons/ac.png"
 theme.widget_cpu                                = theme.confdir .. "/icons/cpu.png"
@@ -105,8 +107,8 @@ theme.cal = lain.widget.calendar({
 -- Weather
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather = lain.widget.weather({
-    city_id = 2643743, -- placeholder (London)
-    notification_preset = { font = "xos4 Terminus 10", fg = theme.fg_normal },
+    city_id = 1117817, -- placeholder (Nagoya, Japan)
+    notification_preset = { font = "Ubuntu Mono 12", fg = theme.fg_normal },
     weather_na_markup = markup.fontfg(theme.font, "#FFFFFF", "N/A "),
     settings = function()
         descr = weather_now["weather"][1]["description"]:lower()
@@ -119,7 +121,7 @@ theme.weather = lain.widget.weather({
 local fsicon = wibox.widget.imagebox(theme.widget_fs)
 theme.fs = lain.widget.fs({
     options = "--exclude-type=tmpfs",
-    notification_preset = { font = "xos4 Terminus 10", fg = theme.fg_normal },
+    notification_preset = { font = "Ubuntu Mono 12", fg = theme.fg_normal },
     settings  = function()
         widget:set_markup(markup.fontfg(theme.font, "#FFFFFF", fs_now.used .. "% "))
     end

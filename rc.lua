@@ -18,7 +18,8 @@ local beautiful     = require("beautiful")
 local naughty       = require("naughty")
 local lain          = require("lain")
 --local menubar       = require("menubar")
-local freedesktop   = require("freedesktop")
+-- local freedesktop   = require("freedesktop")
+require("debian.menu")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local volume_control = require("volume-control")
 -- }}}
@@ -69,7 +70,7 @@ local altkey       = "Mod1"
 local terminal     = "gnome-terminal"
 local editor       = "vim"
 local gui_editor   = "gvim"
-local browser      = "firefox"
+local browser      = "google-chrome"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "web", "term", "docs", "files", "other" }
@@ -171,17 +172,12 @@ local myawesomemenu = {
     { "restart", awesome.restart },
     { "quit", function() awesome.quit() end }
 }
-awful.util.mymainmenu = freedesktop.menu.build({
-    icon_size = beautiful.menu_height or 16,
-    before = {
-        { "Awesome", myawesomemenu, beautiful.awesome_icon },
-        -- other triads can be put here
-    },
-    after = {
-        { "Open terminal", terminal },
-        -- other triads can be put here
-    }
-})
+awful.util.mymainmenu = awful.menu({ items = 
+                                      {
+                                        { "Awesome", myawesomemenu, beautiful.awesome_icon },
+                                        { "Ubuntu",  debian.menu.Debian_menu.Debian },
+                                      } 
+                                    })
 --menubar.utils.terminal = terminal -- Set the Menubar terminal for applications that require it
 -- }}}
 
@@ -218,6 +214,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({}, "XF86AudioRaiseVolume", function() volumecfg:up() end),
     awful.key({}, "XF86AudioLowerVolume", function() volumecfg:down() end),
+    -- awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end),
 
     -- Hotkeys
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -570,8 +567,8 @@ awful.rules.rules = {
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = true } },
 
-    -- Set Firefox to always map on the first tag on screen 1.
-    { rule = { class = "Firefox" },
+    -- Set Google-chrome to always map on the first tag on screen 1.
+    { rule = { class = "chrome" },
       properties = { screen = 1, tag = screen[1].tags[1] } },
 
 }
@@ -667,7 +664,7 @@ os.execute('xset r rate 200 40')
 os.execute('xgamma -gamma 0.6')
 
 awful.util.spawn('compton')
-awful.util.spawn('firefox')
+awful.util.spawn('google-chrome')
 awful.util.spawn('gnome-terminal', {
   callback = function(c)
     awful.client.movetotag(screen[1].tags[2], c)
